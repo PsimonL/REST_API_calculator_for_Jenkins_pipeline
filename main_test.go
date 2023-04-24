@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -23,6 +24,36 @@ func TestHelloHandler(t *testing.T) {
 	}
 
 	expected := "Hello, World!"
+	if rr.Body.String() != expected {
+		t.Errorf("handler returned unexpected body: got %v want %v",
+			rr.Body.String(), expected)
+	}
+}
+
+func TestAddHandler(t *testing.T) {
+	reqBody := []byte(`[2, 3]`)
+
+	// HTTP POST request - request body
+	req, err := http.NewRequest("POST", "/add", bytes.NewBuffer(reqBody))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	// recorder flag
+	rr := httptest.NewRecorder()
+
+	// addHandler function with HTTP request response flag
+	handler := http.HandlerFunc(addHandler)
+	handler.ServeHTTP(rr, req)
+
+	// Check status code
+	if status := rr.Code; status != http.StatusOK {
+		t.Errorf("handler returned wrong status code: got %v want %v",
+			status, http.StatusOK)
+	}
+
+	// Check response body
+	expected := "5\n"
 	if rr.Body.String() != expected {
 		t.Errorf("handler returned unexpected body: got %v want %v",
 			rr.Body.String(), expected)
