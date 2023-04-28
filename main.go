@@ -8,14 +8,14 @@ import (
 )
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello, World!")
+	fmt.Fprintf(w, "Hello, World!\n")
 	fmt.Println("GET requested")
 }
 
 func main() {
 	fmt.Println("REST API listening...")
 	http.HandleFunc("/hello", helloHandler)
-	http.HandleFunc("/add", addHandler) // curl -X POST -H "Content-Type: application/json" -d "[5, 1]" http://localhost:3001/add
+	http.HandleFunc("/add", addHandler)
 	http.HandleFunc("/subtract", subtractHandler)
 	http.HandleFunc("/multiply", multiplyHandler)
 	http.HandleFunc("/divide", divideHandler)
