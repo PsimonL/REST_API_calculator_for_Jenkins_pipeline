@@ -15,7 +15,7 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	fmt.Println("REST API listening...")
 	http.HandleFunc("/hello", helloHandler)
-	http.HandleFunc("/add", addHandler) // curl -d [5, 1] -H "Content-Type: application/json" http://localhost:3001/add
+	http.HandleFunc("/add", addHandler) // curl -X POST -H "Content-Type: application/json" -d "[5, 1]" http://localhost:3001/add
 	http.HandleFunc("/subtract", subtractHandler)
 	http.HandleFunc("/multiply", multiplyHandler)
 	http.HandleFunc("/divide", divideHandler)
