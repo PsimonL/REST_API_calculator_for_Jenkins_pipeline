@@ -3,6 +3,7 @@ Very simple project was needed within the course of DevOps concepts: https://git
 Aim was to build Dockerfiles for building, testing and deploying stages. Next step was to write Jenkins pipeline in Groovy 
 to automatize whole process of CI/CD concept. 
 <br>
+<br>
 Image with working project was published on DockerHub: https://hub.docker.com/r/srpl/go-deploy-img/tags  
 
 Example usage:  
