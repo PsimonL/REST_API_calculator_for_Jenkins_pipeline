@@ -55,3 +55,31 @@ func divideHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(result)
 	fmt.Printf("Division: %d / %d = %d\n", nums[0], nums[1], result)
 }
+
+func exponentiateHandler(w http.ResponseWriter, r *http.Request) {
+	nums, err := validate(w, r)
+	if err != nil {
+		return
+	}
+
+	result := 1
+	for i := 0; i < int(nums[1]); i++ {
+		result *= nums[0]
+	}
+	json.NewEncoder(w).Encode(result)
+	fmt.Printf("Exponentiation: %d ^ %d = %d\n", nums[0], nums[1], result)
+}
+
+func sqrtHandler(w http.ResponseWriter, r *http.Request) {
+	nums, err := validate(w, r)
+	if err != nil {
+		return
+	}
+
+	result := nums[0] / 2.0
+	for i := 0; i < 10; i++ {
+		result = result - ((result*result - nums[0]) / (2 * result))
+	}
+	json.NewEncoder(w).Encode(result)
+	fmt.Printf("Exponentiation: %d ^ 1/%d = %d\n", nums[0], nums[1], result)
+}
