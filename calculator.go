@@ -76,10 +76,10 @@ func sqrtHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	result := nums[0] / 2.0
+	result := float64(nums[0]) / 2.0
 	for i := 0; i < 10; i++ {
-		result = result - ((result*result - nums[0]) / (2 * result))
+		result = result - ((result*result - float64(nums[0])) / (2 * result))
 	}
 	json.NewEncoder(w).Encode(result)
-	fmt.Printf("Exponentiation: %d ^ 1/%d = %d\n", nums[0], nums[1], result)
+	fmt.Printf("Square Root: %d ^ 1/%d = %f\n", nums[0], nums[1], result)
 }
