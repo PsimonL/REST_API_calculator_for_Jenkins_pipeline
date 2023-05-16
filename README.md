@@ -15,5 +15,7 @@ curl http://localhost:3001/hello
 You could also use for instance Postman and send body as RAW with parameters: [5, 1].  
 
 ## "infra" dir
-Bunch of files used for deployment of application; dockerfiles for building separate stages in pipeline written in groovy.
-Also kubernetes simple deployment for local cluster minikube.
+Bunch of files used for deployment of application;
+1. dockerfiles for building separate stages in pipeline written in groovy which were used in mentioned Jenkins tool.
+2. kubernetes simple deployment for local cluster minikube
+3. KUBERNETES TO GO...
