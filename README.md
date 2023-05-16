@@ -13,3 +13,7 @@ curl http://localhost:3001/hello
 <br>
 <br>
 You could also use for instance Postman and send body as RAW with parameters: [5, 1].  
+
+## "infra" dir
+Bunch of files used for deployment of application; dockerfiles for building separate stages in pipeline written in groovy.
+Also kubernetes simple deployment for local cluster minikube.
