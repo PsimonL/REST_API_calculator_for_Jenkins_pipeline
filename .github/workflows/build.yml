@@ -14,7 +14,7 @@ jobs:
   build:
     # GitHub-hosted runners
     # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
-    #
+    # https://stackoverflow.com/questions/70959954/error-waiting-for-a-runner-to-pick-up-this-job-using-github-actions
     runs-on: ubuntu-latest # ubuntu-21.04
 
     steps:
@@ -32,7 +32,10 @@ jobs:
       - name: Build
         run: go build -o REST_API_calculator_for_Jenkins_pipeline
 
-
+      - name: Configure Git
+        run: |
+          git config --global user.email "szymon0r0official@gmail.com"
+          git config --global user.name "Szymon Rogowski"
 
       - name: Commit changes
         run: |
