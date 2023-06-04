@@ -15,14 +15,17 @@ jobs:
     # GitHub-hosted runners
     # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners
     # https://stackoverflow.com/questions/70959954/error-waiting-for-a-runner-to-pick-up-this-job-using-github-actions
+
+    # Working OS for workflow/job
     runs-on: ubuntu-latest # ubuntu-21.04
 
     steps:
       - name: Pull code for workflow env
-        # Official actions provided by GitHub to
+        # Official actions provided by GitHub to download source code to work env for workflow - in my case latest Ubuntu version
         uses: actions/checkout@v2
 
       - name: Set up Go
+        # Official actions provided by GitHub to set up Go
         uses: actions/setup-go@v2
         with:
           go-version: '1.17'
