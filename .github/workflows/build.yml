@@ -35,15 +35,17 @@ jobs:
         run: go mod download
 
       - name: Build
-        # Compile source code and save it as binary, executable file
+        # Compile source code and save it as binary, executable file.
         run: go build -o REST_API_calculator_for_Jenkins_pipeline
 
       - name: Configure Git
+        # Configure IDs for user which are going to bed used during commit operation.
         run: |
           git config --global user.email "szymon0r0official@gmail.com"
           git config --global user.name "Szymon Rogowski"
 
       - name: Commit changes
+        # Finally commit changes, and next commit goes into remote ino_dev, which is in procedure of pull request to master branch.
         run: |
           git add .
           git commit -m "Added build.yaml, check if build passes"
