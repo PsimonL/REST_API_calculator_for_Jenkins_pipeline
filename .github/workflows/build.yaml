@@ -5,12 +5,10 @@ on:
     branches:
       - ino_dev
 
-
 #on:
 #  pull_request:
 #    branches:
 #      - ino_dev
-
 
 jobs:
   build:
