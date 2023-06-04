@@ -18,7 +18,8 @@ jobs:
     runs-on: ubuntu-latest # ubuntu-21.04
 
     steps:
-      - name: Pull code for workflow environment
+      - name: Pull code for workflow env
+        # Official actions provided by GitHub to
         uses: actions/checkout@v2
 
       - name: Set up Go
