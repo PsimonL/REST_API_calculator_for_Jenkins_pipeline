@@ -31,9 +31,11 @@ jobs:
           go-version: '1.17'
 
       - name: Install dependencies
+        # Download all dependencies required for Go build procedure for my project (Rest Api GO calculator).
         run: go mod download
 
       - name: Build
+        # Compile source code and save it as binary, executable file
         run: go build -o REST_API_calculator_for_Jenkins_pipeline
 
       - name: Configure Git
