@@ -5,19 +5,17 @@ on:
     branches:
       - ino_dev
 
-
 #on:
 #  pull_request:
 #    branches:
 #      - ino_dev
-
 
 jobs:
   build:
     runs-on: ubuntu-latest # ubuntu-21.04
 
     steps:
-      - name: Check out code
+      - name: Pull code for workflow env
         uses: actions/checkout@v2
 
       - name: Set up Go
@@ -30,6 +28,11 @@ jobs:
 
       - name: Build
         run: go build -o REST_API_calculator_for_Jenkins_pipeline
+
+      - name: Configure Git
+        run: |
+          git config --global user.email "szymon0r0official@gmail.com"
+          git config --global user.name "Szymon Rogowski"
 
       - name: Commit changes
         run: |
