@@ -1,14 +1,15 @@
 name: Build
 
-#on:
-#  push:
-#    branches:
-#      - ino_dev
-
 on:
-  pull_request:
+  push:
     branches:
       - ino_dev
+
+
+#on:
+#  pull_request:
+#    branches:
+#      - ino_dev
 
 
 jobs:
