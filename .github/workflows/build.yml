@@ -1,0 +1,41 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - ino_dev
+
+#on:
+#  pull_request:
+#    branches:
+#      - ino_dev
+
+jobs:
+  build:
+    runs-on: ubuntu-21.04
+
+    steps:
+      - name: Pull code for workflow environment
+        uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.17'
+
+      - name: Install dependencies
+        run: go mod download
+
+      - name: Build
+        run: go build -o REST_API_calculator_for_Jenkins_pipeline
+
+      - name: Configure Git
+        run: |
+          git config --global user.email "szymon0r0official@gmail.com"
+          git config --global user.name "Szymon Rogowski"
+
+      - name: Commit changes
+        run: |
+          git add .
+          git commit -m "Added build.yaml, check if build passes"
+          git push origin ino_dev
